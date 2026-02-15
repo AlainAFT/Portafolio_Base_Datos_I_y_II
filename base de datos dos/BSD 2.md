@@ -9,7 +9,7 @@
 ## TCL
 
 
-# Tablas Temporales Locales
+# Tablas Temporales Locales 
 
 **características** 
 
@@ -117,4 +117,6 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 16 de febrero de 2026
 
 
+# Enlaces
 
+[#Cuándo utilizar las tablas temporales de SQL frente a las variables de tabla September 16, 2019 by Aamir Syed](https://www.sqlshack.com/es/cuando-utilizar-las-tablas-temporales-de-sql-frente-a-las-variables-de-tabla/)
