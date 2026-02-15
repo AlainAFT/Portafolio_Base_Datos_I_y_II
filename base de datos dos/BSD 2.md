@@ -1,4 +1,4 @@
-#sqlserver  #ISW #SIS-221  #semetre3 #/2026 
+#sqlserver  #ISW #SIS-221  #semetre_3 #_2026  #base_de_datos_II
 # Clase 1
 
 13 de febrero de 2026
