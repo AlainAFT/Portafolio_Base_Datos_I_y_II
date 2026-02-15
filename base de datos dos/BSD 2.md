@@ -63,7 +63,7 @@ También tiene que tener en cuenta que, en caso de conflicto de nombres (recuerd
 
 # Tabla Temporales 
 
-[[SQL]]
+
 # clase 2 
 
 16 de febrero de 2026
