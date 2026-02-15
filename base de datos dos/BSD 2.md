@@ -1,5 +1,5 @@
 #sqlserver 
-# Clase1
+# Clase 1
 
 13 de febrero de 2026
 # Comandos Básicos parte 2
@@ -118,5 +118,7 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 
 
 # Enlaces
+
+## clase 1
 
 [#Cuándo utilizar las tablas temporales de SQL frente a las variables de tabla September 16, 2019 by Aamir Syed](https://www.sqlshack.com/es/cuando-utilizar-las-tablas-temporales-de-sql-frente-a-las-variables-de-tabla/)
