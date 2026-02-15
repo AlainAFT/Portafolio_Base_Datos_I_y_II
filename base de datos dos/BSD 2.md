@@ -15,23 +15,23 @@
 
 *Solo existen en su pagina en la que fue creada y no en las demas*
 
-**eliminar :**  aunque se elimina por si solo y me refiero cuando cierres la sesión de SQL o tu gestor de base de datos se eliminara automáticamente .
+*eliminar :*  aunque se elimina por si solo y me refiero cuando cierres la sesión de SQL o tu gestor de base de datos se eliminara automáticamente .
 pero puedes usar 
 
 `Delete if exist`
 
-ejemplo : 
+*ejemplo :* 
 
 `IF OBJECT_ID('tempdb..#NombreTabla') IS NOT NULL`
     `DROP TABLE #NombreTabla;`   
 
-estructura :
+*estructura :*
 
 `Select into # " Nombre de la tabla temporal "`
 `// codigo restante` 
 
 
-ejemplo :
+*ejemplo :*
 
 `Select  A.id  into # Autores Actuales`
 `from Autores as A`
@@ -39,7 +39,7 @@ ejemplo :
 `on A.id = M.idA`
 `where M.tipo = 'A'`
 
-Implementaciones :
+**Implementaciones :**
 
 Nos sirve para poder alivianar las consultas que hacemos en SQL , normalmente sirve como para guardar resultados de una unión y guardarla para ocuparla para que no se repite pero obviamente si esta dentro de un ciclo de algún tipo. 
 
@@ -47,7 +47,7 @@ Esto no solo nos ahorra el costoso procesamiento de consultas, sino que incluso 
 
 ==Sin embargo, hay un punto que quiero resaltar. Si la sesión en la que estamos trabajando tiene sesiones anidadas posteriormente, las tablas temporales de SQL Server serán visibles en las sesiones inferiores de la jerarquía, pero no arriba en la jerarquía. Permítame visualizar esto.==
 
-Diagrama :
+**Diagrama :**
 
 En este diagrama rápido, se va a crear una tabla temporal de SQL en la sesión 2. Las sesiones siguientes (sesiones 3 y 4) pueden ver la tabla temporal de SQL Server. Pero la sesión 1, que está por encima de la sesión 2, no podrá ver la tabla temporal de SQL Server.
 
