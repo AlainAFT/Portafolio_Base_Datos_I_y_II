@@ -60,9 +60,13 @@ En este diagrama rápido, se va a crear una tabla temporal de SQL en la sesión 
 La tabla temporal de SQL se descarta o destruye una vez que la sesión se desconecta. Muchas veces podrá ver que los desarrolladores usan el comando “DROP # Table_Name” al final de su declaración solo para poder limpiar la tabla. Pero depende totalmente de usted y de lo que está tratando de lograr.
 
 También tiene que tener en cuenta que, en caso de conflicto de nombres (recuerde que las tablas temporales de SQL Server se crean en tempdb), el servidor SQL agregará un sufijo al final del nombre de la tabla para que sea único dentro de la base de datos tempdb. Pero este proceso es transparente para el desarrollador/usuario. Puede utilizar el mismo nombre que declaró ya que está limitado a esa sesión.
+
+# Tabla Temporales 
+
+[[SQL]]
 # clase 2 
 
 16 de febrero de 2026
 
 
-baby
+
