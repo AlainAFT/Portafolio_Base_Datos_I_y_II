@@ -36,13 +36,13 @@ Lo que se hace prácticamente el casteo de esta llave primaria es que cambia la 
 Cuando Quitas el cast de esa consulta ves como en la tabla de **NESTED LOOP | bucles anidados** 
 recorre mucho menos filas que el que tiene cast en su consulta.
 
-**Con cast:**
+# **Con cast:**
 
 ![[Pasted image 20260216133658.png]]
 
 En el apartado de **Numero real de filas por ejecución** es de 2604 filas
 
-**Sin cast :**
+# **Sin cast :**
 
 ![[Pasted image 20260216133841.png]]
 Por ejemplo aquí en el mismo apartado tiene 5 filas para todas las ejecuciones.
