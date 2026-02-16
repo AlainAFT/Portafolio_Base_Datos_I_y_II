@@ -117,6 +117,10 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 16 de febrero de 2026
 
 
+
+[[Tareas#Practica 1 - Plan de ejecución]]
+
+
 # Enlaces
 
 ## clase 1
