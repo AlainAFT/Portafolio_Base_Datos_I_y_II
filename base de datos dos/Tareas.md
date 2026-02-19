@@ -27,7 +27,8 @@ Explicar porque es ineficiente la consulta mirando su plan de ejecución
 
 **esquema del plan de ejecución**
 
-![[Pasted image 20260216102731.png]]
+![diagrama](https://github.com/AlainAFT/Portafolio_Base_Datos_I_y_II/blob/main/imagenes/Pasted%20image%2020260216102731.png?raw=true)
+
 El problema principal es que hace una operación innecesaria para la consulta porque las dos tablas que comparamos en el primer *JOIN* hacemos un casteo de los valores siendo que ambos datos son de tipo *INT*  .  
 En el primer Join se esta comparando la llave primaria de la tabla producto, se nos dijo en clase de que cada llave primaria de las tablas tiene un índice especifico para esas llaves. 
 
@@ -38,13 +39,16 @@ recorre mucho menos filas que el que tiene cast en su consulta.
 
  **Con cast:**
 
-![[Pasted image 20260216133658.png]]
+![diagrama](https://github.com/AlainAFT/Portafolio_Base_Datos_I_y_II/blob/main/imagenes/Pasted%20image%2020260216133658.png?raw=true)
+
+
 
 En el apartado de **Numero real de filas por ejecución** es de 2604 filas
 
  **Sin cast :**
 
-![[Pasted image 20260216133841.png]]
+![](https://github.com/AlainAFT/Portafolio_Base_Datos_I_y_II/blob/main/imagenes/Pasted%20image%2020260216133841.png?raw=true)
+
 Por ejemplo aquí en el mismo apartado tiene 5 filas para todas las ejecuciones.
 Tiene mejores resultados , como en el costo estimado en la CPU , Costo de operador.
 
