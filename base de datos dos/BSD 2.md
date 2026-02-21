@@ -121,6 +121,34 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 [[Tareas#Practica 1 - Plan de ejecución]]
 
 
+# clase 3
+
+20 de febrero 2026
+
+# indices
+
+## incidices agrupados
+
+Usualmente son las llaves primarias en las tablas
+
+Se crea solo no intervienes 
+
+Tener cuidado al usar funciones porque puede cambiar el tipo de busqueda 
+
+## índices no clusterizados
+
+Su creacion son manuales 
+
+No crear demasiados indices no clusterizados en una misma tabla porque cuando consultes esa tabla sera mas lenta de los normal
+
+
+Limite de creacion son 999 indices no clusterizados
+
+Necesitan mantenimiento para estos tipos de indices
+
+## vistas? 
+
+
 # Enlaces
 
 ## clase 1
