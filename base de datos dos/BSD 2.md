@@ -146,8 +146,32 @@ Limite de creacion son 999 indices no clusterizados
 
 Necesitan mantenimiento para estos tipos de indices
 
-## vistas? 
+[[Vistas]]
 
+
+# clase 4
+
+# Optimizacion de consultas 
+
+## orden de ejecución de consultas
+
+Jerarquia en la ejecución en las consultas :
+
+
+Operadores logicos y su jerarquías:
+
+
+## tecnica de reescritura de consultas
+
+
+**JOIN explicito** 
+
+**JOIN implicito**
+
+
+**subconsultas correlacionales**
+
+**subconsultas independientes**
 
 # Enlaces
 
