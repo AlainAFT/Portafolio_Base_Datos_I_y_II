@@ -116,9 +116,10 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 
 16 de febrero de 2026
 
+# metodos de acceso
 
 
-[[Tareas#Practica 1 - Plan de ejecución]]
+
 
 
 # clase 3
@@ -151,27 +152,66 @@ Necesitan mantenimiento para estos tipos de indices
 
 # clase 4
 
-# Optimizacion de consultas 
+# Optimización de consultas 
 
 ## orden de ejecución de consultas
 
-Jerarquia en la ejecución en las consultas :
+**Jerarquía en la ejecución en las consultas :**
+
+![[Pasted image 20260223092326.png]]
 
 
-Operadores logicos y su jerarquías:
+**Operadores Lógicos**
 
+![[Pasted image 20260223092420.png]]
 
-## tecnica de reescritura de consultas
+*jerarquia de operadores logicos*
 
+![[Pasted image 20260223092457.png]]
+## técnica de reescritura de consultas
+
+Si se puede permite usar un `JOIN implicito` es mucho mejor que el `JOIN EXPLiCITO`
 
 **JOIN explicito** 
 
-**JOIN implicito**
+![[Pasted image 20260223092743.png]]
 
+**JOIN implícito**
+
+![[Pasted image 20260223092751.png]]
 
 **subconsultas correlacionales**
 
+la subconsulta depende de la primera porque necesita el `DEPARTMENTID` para poder sacar el promedio de salario de ese departamento.
+
+Osea se ejecuta varias veces este `AVG()` , mas o menos uno por fila
+
+```
+SELECT e.EmployeeID, e.Name, e.Salary
+FROM Employees e
+WHERE e.Salary > (
+    SELECT AVG(Salary)
+    FROM Employees
+    WHERE DepartmentID = e.DepartmentID  -- referencia a la fila exterior
+);
+```
+
 **subconsultas independientes**
+
+Por ejemplo aquí no necesita nada de la anterior consulta solo espera el valor del salario de cada empleado y se compara con el promedio de todos los empleados
+
+```
+SELECT e.EmployeeID, e.Name, e.Salary
+FROM Employees e
+WHERE e.Salary > (
+    SELECT AVG(Salary)
+    FROM Employees
+);
+```
+
+**Evitar Operaciones costosas , usa las esenciales porque funciones de agregación o operaciones de ordenamiento son pesadas para el rendimiento**
+
+**Aprovecha los índices**
 
 # Enlaces
 
