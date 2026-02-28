@@ -118,7 +118,17 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 
 # metodos de acceso
 
+## recorrido seceuncial
 
+Es un recorrido del registro completo y de manera lineal , es complicado o ineficiente al buscar cosas en especifico.
+
+## recorrido por claves
+
+El recorrido por claves hace referencia a las `indices agrupadas | clustered index` que son índices que se crean automáticamente para cada llave primaria de cada tabla. Asi hace de que cada vez que hay conexiones entre tablas estas llaves tienen un acceso rapido.
+
+# recorrido por indices
+
+El recorrido
 
 
 
@@ -213,8 +223,9 @@ WHERE e.Salary > (
 
 **Aprovecha los índices**
 
+
 # Enlaces
 
-## clase 1
+
 
 [Cuándo utilizar las tablas temporales de SQL frente a las variables de tabla September 16, 2019 by Aamir Syed](https://www.sqlshack.com/es/cuando-utilizar-las-tablas-temporales-de-sql-frente-a-las-variables-de-tabla/)
