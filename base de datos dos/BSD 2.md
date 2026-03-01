@@ -130,7 +130,7 @@ El recorrido por claves hace referencia a las `indices agrupadas | clustered ind
 
 El recorrido
 
-
+a
 
 # clase 3
 
