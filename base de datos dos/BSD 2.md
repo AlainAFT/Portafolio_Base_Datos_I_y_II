@@ -8,8 +8,8 @@
 
 ## TCL
 
-
-# Tablas Temporales Locales 
+# TABLAS TEMPORALES
+## Tablas Temporales Locales 
 
 **características** 
 
@@ -61,7 +61,7 @@ La tabla temporal de SQL se descarta o destruye una vez que la sesión se descon
 
 También tiene que tener en cuenta que, en caso de conflicto de nombres (recuerde que las tablas temporales de SQL Server se crean en tempdb), el servidor SQL agregará un sufijo al final del nombre de la tabla para que sea único dentro de la base de datos tempdb. Pero este proceso es transparente para el desarrollador/usuario. Puede utilizar el mismo nombre que declaró ya que está limitado a esa sesión.
 
-# Tabla Temporales Globales
+## Tabla Temporales Globales
 
 
 **Definición:**
@@ -126,19 +126,19 @@ Es un recorrido del registro completo y de manera lineal , es complicado o inefi
 
 El recorrido por claves hace referencia a las `indices agrupadas | clustered index` que son índices que se crean automáticamente para cada llave primaria de cada tabla. Asi hace de que cada vez que hay conexiones entre tablas estas llaves tienen un acceso rapido.
 
-# recorrido por indices
+# recorrido por índices
 
-El recorrido
+El recorrido es por relaciones que creas entre llaves o columnas se las conoce como `Indices no agrupados | no clustered index`  
 
-a
+
 
 # clase 3
 
 20 de febrero 2026
 
-# indices
+# índices
 
-## incidices agrupados
+## indices agrupados
 
 Usualmente son las llaves primarias en las tablas
 
@@ -148,16 +148,16 @@ Tener cuidado al usar funciones porque puede cambiar el tipo de busqueda
 
 ## índices no clusterizados
 
-Su creacion son manuales 
+Su creación son manuales 
 
-No crear demasiados indices no clusterizados en una misma tabla porque cuando consultes esa tabla sera mas lenta de los normal
+No crear demasiados `indices no clusterizados` en una misma tabla porque cuando consultes esa tabla sera mas lenta de los normal
 
 
-Limite de creacion son 999 indices no clusterizados
+Limite de creación son 999  `índices no clusterizados`
 
-Necesitan mantenimiento para estos tipos de indices
+Necesitan mantenimiento para estos tipos de índices
 
-[[Vistas]]
+breve mención de las [[Vistas]] en `SQL`
 
 
 # clase 4
