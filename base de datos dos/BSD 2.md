@@ -118,17 +118,28 @@ INNER JOIN dbo.SalesDetails AS B ON A.ProducitID = B.ProductID
 
 # metodos de acceso
 
-## recorrido seceuncial
+## recorrido secuencial
 
 Es un recorrido del registro completo y de manera lineal , es complicado o ineficiente al buscar cosas en especifico.
 
 ## recorrido por claves
 
-El recorrido por claves hace referencia a las `indices agrupadas | clustered index` que son índices que se crean automáticamente para cada llave primaria de cada tabla. Asi hace de que cada vez que hay conexiones entre tablas estas llaves tienen un acceso rapido.
+El recorrido por claves hace referencia a las `indices agrupadas | clustered index` que son índices que se crean automáticamente para cada llave primaria de cada tabla. Asi hace de que cada vez que hay conexiones entre tablas estas llaves tienen un acceso rápido.
 
 # recorrido por índices
 
 El recorrido es por relaciones que creas entre llaves o columnas se las conoce como `Indices no agrupados | no clustered index`  
+
+## recorrido por `Hashing`
+
+Trata de crear una llave con datos o con las características del objeto o dato y pues el chiste es que cada dato tenga diferente llave de manera aleatoria.
+
+**Ejemplo:**
+
+Digamos un `string`:
+
+Dormir  y que creamos una función que atreves de operaciones cifre una llave para esta para palabra para que se pueda acceder de manera directa al dato . Si hacemos referencia al `ASCII` pues cada letra tiene un numero y pues digamos que la suma de dichas letras es nuestro codigo. Eso seria un ejemplo simple.
+
 
 
 
@@ -138,15 +149,15 @@ El recorrido es por relaciones que creas entre llaves o columnas se las conoce c
 
 # índices
 
-## indices agrupados
+## índices agrupados
 
 Usualmente son las llaves primarias en las tablas
 
 Se crea solo no intervienes 
 
-Tener cuidado al usar funciones porque puede cambiar el tipo de busqueda 
+Tener cuidado al usar funciones porque puede cambiar el tipo de búsqueda 
 
-## índices no clusterizados
+## `índices no clusterizados`
 
 Su creación son manuales 
 
@@ -175,7 +186,7 @@ breve mención de las [[Vistas]] en `SQL`
 
 ![[Pasted image 20260223092420.png]]
 
-*jerarquia de operadores logicos*
+**jerarquía de operadores lógicos**
 
 ![[Pasted image 20260223092457.png]]
 ## técnica de reescritura de consultas
@@ -184,9 +195,12 @@ Si se puede permite usar un `JOIN implicito` es mucho mejor que el `JOIN EXPLiCI
 
 **JOIN explicito** 
 
+
 ![[Pasted image 20260223092743.png]]
 
 **JOIN implícito**
+
+Es mas eficiente pero es mas cargada para tu `cpu` porque trae toda la tabla `product y productsubcategory` Y luego compara las llaves primarias. 
 
 ![[Pasted image 20260223092751.png]]
 
@@ -222,6 +236,139 @@ WHERE e.Salary > (
 **Evitar Operaciones costosas , usa las esenciales porque funciones de agregación o operaciones de ordenamiento son pesadas para el rendimiento**
 
 **Aprovecha los índices**
+
+# clase 5 
+
+# Manejo de buffer 
+
+## `Buffer`
+
+Es una pagina de `8 KB` donde se almacenan datos en la memoria , y podemos decir que la memoria esta conformada por capas de `buffer`. 
+
+## grupo de `buffers`
+
+El **grupo de `buffers`** proporciona una extensión de memoria que mejora ligeramente el rendimiento 
+
+Un grupo de buffers en una base de datos ofrece varios beneficios que contribuyen a mejorar el rendimiento, la eficiencia y la capacidad de respuesta del sistema.
+## Beneficios del grupo de `buffers`
+
+**Lectura rápida es datos ya leídos** : Cuando la consulta ya sido realizada recientemente , se almacenan los datos o resultados en el `Buffer Pool` si se necesitan nuevamente. Y es mas rápido porque esta accediendo a la memoria Volátil.
+
+**Reducción de trafico en el disco duro:** A lo que me refiero que en vez de consultar al disco duro donde esta la información , consulta en el `Buffer Pool` que es mas eficiente y en general mejora el rendimiento del sistema.
+
+**Mejora de la Concurrencia**: Cuando el servidor es manejado por varios usuarios , se pueden hacer muchas transacciones , consultas  y cambios durante sus acciones `/Concurrencia/` . Todo esto puede ser realizado en los grupos de `Buffers` en vez del almacenamiento físico asi evitando mucho costo de velocidad.
+
+## Consulta para ver el `buffer`
+
+```
+SELECT 
+COUNT(*) AS pagina_buffers,
+DB_NAME(database_id) as nombre_base_datos
+from sys.dm_os_buffer_descriptors
+group by database_id
+```
+
+## Limpieza del `buffer`
+```
+DBCC DROPCLEANBUFFERS;
+```
+
+# Control de concurrencia
+
+## DEFINICION 
+Es un aspecto que hace que el permita que muchos usuarios puedan hacer transacciones en una misma base de datos simultáneamente.
+**Su importancia** es que garantiza la consistencia de la base de datos y que  aísla cada transacción de diferente usuarios asi evitando inconsistencias.
+
+## Transacción
+
+Son Instrucciones o pasos que no pueden ser divididas o partidas porque son unidades atómicas, donde se logra hacer todo o no se logra hacer nada.
+
+**Tipos de transacción**
+**Implícito** 
+     Especifica cualquier función `INSERT , Update y DELETE` como tipo de transacción
+
+**Explicito**
+    Se usa `Commit , ROLL BACK Y BEGIN TRANSACCION` para estas.
+
+## Propiedades
+
+**Consistencia**
+	 La garantía de que la base de dato se mantenga valida antes y después de que se haga una transacción
+
+**Durabilidad**
+     Hace que si una transacción ya fue confirmada esos cambios permanezcan en la base de datos sin importar lo que pase
+
+**Atomicidad**
+     Garantiza de que todo lo que se hace en la transacción se haga todo y si no se hace , vuelve a su estado Normal de antes `Control + Z`
+
+**Aislamiento**
+     Ejecuta cada transacción de manera asilada , que no es visible para los demas hasta que se complete la transacción asi que se ejecuta sin tomar en cuenta las demas pero puede ser revertida para mantener la consistencia para evitar conflictos
+## Sentencia SQL-T
+
+**`Commit`**
+Se coloca al final de la transaccion y esto hace para que se guarden los cambios cuando ya todo este realizado .
+
+**`ROLLBACK`**
+Es como un retorno al estado anterior , se usa cuando se detectan errores o incosistencias y se vuelve cuando la base de datos era valida.
+
+**`bEGIN TRANSACTION`**
+Marca el inicio de la transaccion
+
+## Niveles de aislamiento
+
+**No confirmado** -. Es un nivel donde las transacciones pueden leer datos por transacciones aun no confirmadas o realizadas . /`Flujo de datos` / 
+
+```
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED; GO SELECT * FROM HumanResources.Employee;
+```
+
+**Confirmados**-. Es un nivel donde las transacciones leen solo datos por transacciones ya realizadas descartando las no realizadas aun .
+```
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED; GO SELECT * FROM HumanResources.Employee;
+```
+
+**Repetible** -. Garantiza que las transacciones puedan leer los mismos datos varias veces y que estos no cambien entre lecturas.
+
+```
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED; GO SELECT * FROM HumanResources.Employee;
+```
+
+**Serializable** -. Un nivel mayor de aislamiento que hace que las transacciones se realicen de manera secuencial sin que ocurran ninguna interferencia .
+```
+SET TRANSACTION ISOLATION LEVEL REPEATABLE READ; GO SELECT * FROM HumanResources.Employee;
+```
+## Estrategias de Bloqueo 
+
+**Exclusivo** -. No permiten que los datos sean accedidos mientras se esta transacción.
+
+```
+BEGIN TRANSACTION; UPDATE Sales.Customer SET TerritoryID=2 WHERE CustomerID = 1; COMMIT TRANSACTION
+```
+
+**Compartido** -. Permite que múltiples transacciones accedan a los mismo datos.
+```
+ BEGIN TRANSACTION; SELECT * FROM Sales.Customer WHERE CustomerID = 1; COMMIT TRANSACTION;
+```
+
+**`DEADLOCK`** -. Es cuando ocurre que dos o mas transacciones se bloquean entre si y esperan los resultados de la primera transacción en entrar , causa una parálisis en la base de datos 
+
+```
+-- Primera transacción
+BEGIN TRANSACTION; 
+UPDATE Sales.Customer SET TerritoryID=2 
+WHERE CustomerID = 1;
+ WAITFOR DELAY '00:00:05'; -- Simular retraso 
+ UPDATE HumanResources.Employee SET JobTitle = 'Manager' WHERE NationalIDNumber = 2; COMMIT TRANSACTION;
+ 
+ -- Segunda transacción (Ejecutar en otra sesión simultánea) 
+ BEGIN TRANSACTION; 
+ UPDATE HumanResources.Employee SET JobTitle = 'Director' 
+ WHERE NationalIDNumber = 2; 
+ WAITFOR DELAY '00:00:05'; -- Simular retraso 
+ UPDATE Sales.Customer SET TerritoryID=2 
+ WHERE CustomerID = 1; COMMIT TRANSACTION;
+```
+
 
 
 # Enlaces
