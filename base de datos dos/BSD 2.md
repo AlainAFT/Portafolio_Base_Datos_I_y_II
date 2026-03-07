@@ -378,10 +378,11 @@ Es una representación virtual de los datos.
 *objetivos*
 
 Simplificar consultas complejas :
+Almacena consultas largas. 
 
-Seguridad :
+Seguridad :  Haces solo se pueda acceder a ciertas columnas 
 
-Mantenimiento :
+Mantenimiento : bueno al ser una estructura no definida pues se puede ser cambiada con el tiempo. 
 
 _____________________________________
 
@@ -411,7 +412,7 @@ Drop view "name"
 ```
 // como hacer que una vista no pueda cambiar para que se pueda implementar índices 
 
-With schemebinding
+With scheme binding
 
 ```
 
@@ -420,7 +421,9 @@ With schemebinding
 
 **Ventajas de Usar Vistas**
 
+Mejorar el rendimiento de la base de datos. 
 
+Mantenimiento no esta sujeto a nada. 
 
 
 
