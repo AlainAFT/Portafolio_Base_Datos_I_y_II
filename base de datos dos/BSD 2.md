@@ -369,6 +369,61 @@ WHERE CustomerID = 1;
  WHERE CustomerID = 1; COMMIT TRANSACTION;
 ```
 
+# Vistas
+
+## Definición 
+
+Es una representación virtual de los datos. 
+
+*objetivos*
+
+Simplificar consultas complejas :
+
+Seguridad :
+
+Mantenimiento :
+
+_____________________________________
+
+*Utilidad* : 
+
+
+
+---
+
+
+## sintaxis
+
+
+```
+// crear una vista
+
+Create view  "name" as 
+Select........ 
+From....... 
+
+// eleminar la vista
+
+Drop view "name"
+```
+
+
+```
+// como hacer que una vista no pueda cambiar para que se pueda implementar índices 
+
+With schemebinding
+
+```
+
+---
+
+
+**Ventajas de Usar Vistas**
+
+
+
+
+
 
 
 # Enlaces
