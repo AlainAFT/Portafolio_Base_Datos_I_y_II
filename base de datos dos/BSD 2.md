@@ -330,7 +330,7 @@ SET TRANSACTION ISOLATION LEVEL READ COMMITTED; GO SELECT * FROM HumanResources.
 **Repetible** -. Garantiza que las transacciones puedan leer los mismos datos varias veces y que estos no cambien entre lecturas.
 
 ```
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED; GO SELECT * FROM HumanResources.Employee;
+SET TRANSACTION ISOLATION LEVEL REAPETIBLE READ ; GO SELECT * FROM HumanResources.Employee;
 ```
 
 **Serializable** -. Un nivel mayor de aislamiento que hace que las transacciones se realicen de manera secuencial sin que ocurran ninguna interferencia .
@@ -386,7 +386,11 @@ Mantenimiento : bueno al ser una estructura no definida pues se puede ser cambia
 
 _____________________________________
 
-*Utilidad* : 
+*tipos de vistas*
+
+Vistas simples : solo una tabla
+
+Vistas complejas : varias tablas
 
 
 
