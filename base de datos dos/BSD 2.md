@@ -431,8 +431,31 @@ Mantenimiento no esta sujeto a nada.
 
 
 
+# `triggers` o gatillos
+
+## para que sirve 
+
+Cuando sucede cambios en una tabla se ejecuta una instrucción para hacer cambios para otra tabla
+
+## estructura
+```
+
+```
 
 
+`inserted`. - la tabla o campo que fue la ultima en ser insertada
+
+`deleted`.-  La tabla o campo que ultima vez fue eliminada
+
+## tipos de `triggers`
+
+**tipo `After`**
+
+Se ejecuta despues de un cambio en alguna tabla
+
+**tipo `instead of`**
+Se ejecuta antes de un cambio de una tabla, nos sirve mas o menos como para verificar. 
+## consideraciones
 # Enlaces
 
 
