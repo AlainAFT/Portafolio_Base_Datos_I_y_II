@@ -456,6 +456,80 @@ Se ejecuta despues de un cambio en alguna tabla
 **tipo `instead of`**
 Se ejecuta antes de un cambio de una tabla, nos sirve mas o menos como para verificar. 
 ## consideraciones
+
+Evitar bucles recursivos donde un trigger activa otro trigger. 
+
+# conceptos basicos de seguridad 
+
+**confidencialidad **
+
+**integridad **
+
+**Disponibilidad**
+
+
+## esquemas
+
+
+## roles
+
+**Roles fijos dentro del servidor**
+
+**Roles fijos dentro de la base de datos**
+
+
+# Sistemas de Recuperación 
+
+  Garantiza integridad y disponibilidad en la base de datos. 
+  Minimizan el tiempo en el que estan fuera de sistemas. 
+  Guardar y recuperar. 
+
+## transaction log (historial transacciones) 
+
+  Guarda cada transacción que se realiza en la base de datos. 
+  Se necesita activar manualmente. 
+
+## Back up (guardar )
+
+Guardar simplemente el estado de la base de datos. 
+
+## Restore (restauracion) 
+
+Recuperar ese estado de la base de datos que se guardo del `back up` 
+
+## Recovery Models (modelos de recuperación )
+
+ Nos pueden ayudar a como recuperar los datos en caso de un fallo. 
+
+## Recuperación a un punto del tiempo 
+
+  Restaurar la base de datos a un estado específico en un momento determinado. 
+
+## métodos de back up
+
+**full database back up**
+  Obtiene información hasta el inicio del back up.
+  
+**Back up Diferencial**
+   Saca solo las partes de la base de datos que cambiaron despues del `full database back up` y esa es su condición si o si necesitas que se ejecute primero. 
+
+**back up de registro de transacciones**
+  Guarda solo los cambios registrados en las base de datos. Usando(`Insert, Update, Delete`)
+  
+**Back up de archivos**
+
+  Guarda estados de campos especificos para poder volver a un estado valido. 
+
+
+
+
+
+****
+
+
+
+
+
 # Enlaces
 
 
